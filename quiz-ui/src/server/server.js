@@ -11,7 +11,6 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpackConfig from '../../webpack.config.dev';
 import render from './render';
 
-
 const app = Express();
 const server = new http.Server(app);
 

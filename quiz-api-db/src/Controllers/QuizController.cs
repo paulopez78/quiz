@@ -11,7 +11,7 @@ namespace Quiz.Api.Controllers
     public class QuizController
     {
         private readonly QuizContext _quizContext;
-        
+
         public QuizController(QuizContext quizContext)
         {
             _quizContext = quizContext;
@@ -30,10 +30,19 @@ namespace Quiz.Api.Controllers
         [HttpGet("Active")]
         public async Task<Model.Quiz> GetActive()
         {
-            return await _quizContext.Quizzes
-                        .Include(x => x.Questions)
-                        .ThenInclude(y => y.Options)
-                        .FirstOrDefaultAsync(x => x.Active);
+            return await GetActiveQuiz();
+        }
+
+        [HttpPost("Answer")]
+        public async Task Answer([FromBody]Model.QuestionAnswer answer)
+        {
+            var answeredOption = await _quizContext.Set<QuestionOption>()
+            .FirstOrDefaultAsync(x => x.Id ==answer.Option);
+
+            if (answeredOption != null){
+              answeredOption.Result = answer.Result;
+              await _quizContext.SaveChangesAsync();
+            }
         }
 
         [HttpGet("{id}")]
@@ -76,6 +85,13 @@ namespace Quiz.Api.Controllers
             var quiz = await _quizContext.Quizzes.FirstOrDefaultAsync(x => x.Id == id);
             _quizContext.Remove(quiz);
             await _quizContext.SaveChangesAsync();
+        }
+
+        private async Task<Model.Quiz> GetActiveQuiz(){
+          return await _quizContext.Quizzes
+                      .Include(x => x.Questions)
+                      .ThenInclude(y => y.Options)
+                      .FirstOrDefaultAsync(x => x.Active);
         }
     }
 }
