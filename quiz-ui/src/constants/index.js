@@ -8,3 +8,6 @@ export const RECEIVE_QUESTION_RESULT = 'RECEIVE_QUESTION_RESULT';
 export const POST_QUESTION_ANSWER = 'POST_QUESTION_ANSWER';
 export const POST_QUESTION_ANSWER_SUCCESS = 'POST_QUESTION_ANSWER_SUCCESS';
 export const POST_QUESTION_ANSWER_ERROR = 'POST_QUESTION_ANSWER_ERROR';
+
+export const DEVELOPMENT = process.env.NODE_ENV == 'development';
+export const PRODUCTION = process.env.NODE_ENV == 'production';

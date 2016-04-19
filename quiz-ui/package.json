@@ -2,8 +2,10 @@
   "name": "quiz-ui",
   "version": "0.0.2",
   "scripts": {
-    "start": "node ./src/server/index.js",
-    "build": "webpack -p --config webpack.config.prod.js"
+    "dev": "NODE_ENV='development' node ./src/server/index.js",
+    "start": "NODE_ENV='production' node ./src/server/index.js",
+    "build": "npm run clean && webpack -p --config ./webpack.config.prod.js",
+    "clean": "rm -rf build"
   },
   "devDependencies": {
     "babel-core": "^6.7.6",

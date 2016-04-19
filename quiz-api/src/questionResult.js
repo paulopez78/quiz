@@ -7,6 +7,18 @@ const pub = redis.createClient(REDIS_OPTIONS);
 const sub = redis.createClient(REDIS_OPTIONS);
 const client = redis.createClient(REDIS_OPTIONS);
 
+client.on("error", function (err) {
+    console.log("Error " + err);
+});
+
+pub.on("error", function (err) {
+    console.log("Error " + err);
+});
+
+sub.on("error", function (err) {
+    console.log("Error " + err);
+});
+
 export function createSubscription(onNext){
   let subscriptions = [];
 
@@ -29,7 +41,6 @@ export function createSubscription(onNext){
 
   return { subscribe }
 }
-
 
 export function publish(answer){
   return new Promise((resolve, reject) => {
