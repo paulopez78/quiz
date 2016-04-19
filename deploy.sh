@@ -7,6 +7,10 @@ cd ..
 docker build -t paulopez/quiz-api-db:latest .
 docker push paulopez/quiz-api-db
 
+cd ../quiz-worker
+docker build -t paulopez/quiz-worker:latest .
+docker push paulopez/quiz-worker
+
 cd ../quiz-api
 docker build -t paulopez/quiz-api:latest .
 docker push paulopez/quiz-api
