@@ -5,7 +5,7 @@ import { Panel } from 'react-bootstrap';
 import ToggleResultContainer from '../containers/ToggleResultContainer';
 
 const Question = ({ id, name, options }) =>
-    <Panel header={name}>
+    <Panel header={name} style={{minWidth:'300px'}}>
       <OptionsListContainer
         questionId={id}
         options={options}/>

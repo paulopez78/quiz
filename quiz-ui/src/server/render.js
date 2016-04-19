@@ -24,8 +24,9 @@ const renderFullPage = (html, initialState) => {
     <html>
       <head>
         <title>Quiz ui</title>
+          <meta name="viewport" content="width=device-width, initial-scale=1">
       </head>
-      <body style="margin:5px">
+      <body style="margin:15px">
         <div id="root">${html}</div>
         <script>
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
