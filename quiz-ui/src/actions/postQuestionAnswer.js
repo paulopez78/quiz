@@ -1,5 +1,4 @@
 import fetch from 'isomorphic-fetch';
-import { API_URL } from '../config.js';
 import { selectedQuestion } from '../containers/common';
 import {
   POST_QUESTION_ANSWER,
@@ -40,7 +39,7 @@ export default function postQuestionAnswer(questionId) {
     }
 
     dispatch(requestPostQuestionAnswer(answer))
-    return fetch(`${API_URL}quiz/answer`,
+    return fetch('/api/quiz/answer',
       {
         method: 'POST',
         body: JSON.stringify(answer),

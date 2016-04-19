@@ -1,5 +1,4 @@
 import fetch from 'isomorphic-fetch'
-import { API_URL } from '../config.js'
 
 import {
   REQUEST_QUIZ,
@@ -30,7 +29,7 @@ function receiveActiveQuiz(quiz) {
 export default function fetchActiveQuiz() {
   return dispatch => {
     dispatch(requestActiveQuiz())
-    return fetch(`${API_URL}quiz/active`)
+    return fetch("/api/quiz/active")
       .then(response => response.json())
       .then(quiz => dispatch(receiveActiveQuiz(quiz)))
       .catch(error => dispatch(requestActiveQuizError(error)))

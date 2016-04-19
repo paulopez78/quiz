@@ -4,9 +4,7 @@ services:
   quiz-ui:
     build: ./quiz-ui/.
     ports:
-      - "3000:80"
-    links:
-      - redis
+      - "3000:3000"
     networks:
       - front-tier
       - back-tier
