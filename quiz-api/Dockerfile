@@ -7,7 +7,5 @@ RUN mkdir -p /opt/app && cp -a /tmp/node_modules /opt/app/
 WORKDIR /opt/app
 ADD . /opt/app
 
-RUN npm run build
-
 EXPOSE 3000
 ENTRYPOINT npm start

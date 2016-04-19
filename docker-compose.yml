@@ -21,7 +21,7 @@ services:
       - back-tier
 
   quiz-api-db:
-    build: ./quiz-aspnet-api/.
+    build: ./quiz-api-db/.
     ports:
       - "5000:5000"
     networks:
