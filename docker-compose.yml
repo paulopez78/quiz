@@ -13,9 +13,8 @@ services:
     build: ./quiz-api/.
     ports:
       - "3030:3030"
-    links:
-      - redis
     networks:
+      - external-tier
       - back-tier
 
   quiz-api-db:
@@ -23,7 +22,7 @@ services:
     ports:
       - "5000:5000"
     networks:
-      - back-tier
+      - external-tier
 
   redis:
     image: redis
@@ -33,4 +32,5 @@ services:
 
 networks:
   front-tier:
+  external-tier:
   back-tier:
