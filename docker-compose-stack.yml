@@ -13,6 +13,12 @@ api:
   - apidb
   - redis
 
+worker:
+ build: ./quiz-worker/.
+ links:
+  - apidb
+  - redis
+
 apidb:
  build: ./quiz-api-db/.
  ports:

@@ -5,6 +5,8 @@ services:
     build: ./quiz-ui/.
     ports:
       - "3000:3000"
+    links:
+      - quiz-api
     networks:
       - front-tier
       - back-tier
@@ -13,6 +15,9 @@ services:
     build: ./quiz-api/.
     ports:
       - "3030:3030"
+    links:
+      - redis
+      - quiz-api-db
     networks:
       - external-tier
       - back-tier
@@ -24,9 +29,19 @@ services:
     networks:
       - external-tier
 
+  quiz-worker:
+    build: ./quiz-worker/.
+    links:
+      - redis
+      - quiz-api-db
+    networks:
+      - external-tier
+      - back-tier
+
   redis:
     image: redis
-    ports: ["6379"]
+    ports:
+      - "6379:6379"
     networks:
       - back-tier
 

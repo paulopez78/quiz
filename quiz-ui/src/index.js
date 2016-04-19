@@ -22,7 +22,6 @@ ReactDOM.render(
 function initSocket() {
   const socket = io('', {path: '/ws'});
   socket.on('question_answer', (data) => {
-    console.log(data);
     store.dispatch(receiveQuestionResult(data))
   });
 

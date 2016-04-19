@@ -1,21 +1,25 @@
 from settings import r
-import sys
-import json
-import urllib3
+import time
+from api import postAnswer
 
 if __name__ == '__main__':
-    channel = sys.argv[1]
+    try:
+        while True:
+            print 'Starting quiz worker'
+            try:
+                channel = 'question_answer'
+                pubsub = r.pubsub()
+                pubsub.subscribe(channel)
 
-    pubsub = r.pubsub()
-    pubsub.subscribe(channel)
+                print 'Listening to {channel}'.format(**locals())
 
-    print 'Listening to {channel}'.format(**locals())
+                while True:
+                    for item in pubsub.listen():
+                        data = item['data']
+                        postAnswer(data)
+            except Exception,e:
+                print str(e)
+                time.sleep(1)
 
-    while True:
-        for item in pubsub.listen():
-            print item['data']
-            encoded_body = json.dumps({item['data']})
-            http = urllib3.PoolManager()
-            api = http.request('POST', 'http://192.168.99.100:5000/quiz/answer',
-                             headers={'Content-Type': 'application/json'},
-                             body=encoded_body
+    except KeyboardInterrupt:
+        print 'interrupted!'
