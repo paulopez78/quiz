@@ -1,0 +1,22 @@
+{
+  "version": "1.0.0-*",
+  "compilationOptions": {
+    "emitEntryPoint": true
+  },
+  "dependencies": {
+    "Microsoft.AspNet.Server.Kestrel": "1.0.0-*",
+    "Microsoft.AspNet.Mvc.Core": "6.0.0-*",
+    "Microsoft.AspNet.Mvc.Formatters.Json": "6.0.0-*",
+    "Microsoft.AspNet.Cors": "6.0.0-*",
+    "Swashbuckle.SwaggerGen": "6.0.0-*",
+    "Swashbuckle.SwaggerUi": "6.0.0-*",
+    "EntityFramework.Core": "7.0.0-*",
+    "EntityFramework.InMemory": "7.0.0-*"
+  },
+  "commands": {
+    "web": "Microsoft.AspNet.Server.Kestrel"
+  },
+  "frameworks": {
+    "dnxcore50": { }
+  }
+}
