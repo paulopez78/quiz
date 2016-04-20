@@ -9,5 +9,5 @@ def postAnswer(data):
         url = 'http://{0}:{1}/quiz/answer'.format(apiHost,apiPort)
 
         http = urllib3.PoolManager()
-        http.request('POST', url, headers={'Content-Type': 'application/json'}, body=data)
+        http.request('PUT', url, headers={'Content-Type': 'application/json'}, body=data)
         print "posted data",data

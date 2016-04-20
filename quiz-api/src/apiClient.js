@@ -12,10 +12,30 @@ export function getQuiz(){
 
     const req = http.request(options, (res) => {
       res.setEncoding('utf8');
-      res.on('data', (data) => resolve(JSON.parse(data)));
+      var data = '';
+      res.on('data', (chunk) => {
+        data += chunk;
+
+        // Hack thanks to Kestrel server not ending the connection
+        if (isJSON(data)){
+          resolve(JSON.parse(data));
+        }
+      });
+
+      res.on('end', () => resolve(JSON.parse(data)));
     });
 
     req.on('error', (error) => reject(error.message));
     req.end();
   });
+}
+
+function isJSON (json) {
+  var parsed
+  try {
+    parsed = JSON.parse(json)
+    return true;
+  } catch (e) {
+    return false;
+  }
 }

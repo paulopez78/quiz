@@ -13,14 +13,14 @@ namespace Quiz.Api.Model
             context.AddRange(
               new Quiz
               {
-                  Name = "React Quiz",
+                  Name = "React+Redux+JS Quiz",
                   Description = "React Quiz Questions",
                   Active = true,
                   Questions = new List<Question>
                   {
                         new Question
                         {
-                          Name = "Who is the creator of React",
+                          Name = "Who is the creator of React?",
                           Options = new List<QuestionOption>{
                             new QuestionOption {
                               Name = "Facebook",
@@ -28,24 +28,24 @@ namespace Quiz.Api.Model
                             },
                             new QuestionOption {
                               Name = "Microsoft",
-                              Correct = false                              
+                              Correct = false
                             },
                             new QuestionOption {
                               Name = "Twitter",
-                              Correct = false                              
+                              Correct = false
                             }
                           }
                         },
                         new Question
                         {
-                          Name = "Who is the competitor of React",
+                          Name = "Who is the main competitor of React?",
                           Options = new List<QuestionOption>{
                             new QuestionOption {
-                              Name = "WPF",
-                              Correct = false                              
+                              Name = "XAML",
+                              Correct = false
                             },
                             new QuestionOption {
-                              Name = "Angular2",
+                              Name = "Angular 2",
                               Correct = true
                             },
                             new QuestionOption {
@@ -56,25 +56,25 @@ namespace Quiz.Api.Model
                         },
                           new Question
                         {
-                          Name = "Who is the creator of Redux",
+                          Name = "Who is the creator of Redux?",
                           Options = new List<QuestionOption>{
                             new QuestionOption {
                               Name = "Dan Abramov",
                               Correct = true
                             },
                             new QuestionOption {
-                              Name = "Me",
+                              Name = "My Mom",
                               Correct = false
                             },
                             new QuestionOption {
-                              Name = "You",
+                              Name = "Darth Vader",
                               Correct = false
                             }
                           }
                         },
                         new Question
                         {
-                          Name = "Who is the competitor of Redux",
+                          Name = "Who is the competitor of Redux?",
                           Options = new List<QuestionOption>{
                             new QuestionOption {
                               Name = "Flux",
@@ -87,6 +87,42 @@ namespace Quiz.Api.Model
                             new QuestionOption {
                               Name = "MVVM",
                               Correct = true
+                            }
+                          }
+                        },
+                        new Question
+                        {
+                          Name = "What's the most popular JS transpiler?",
+                          Options = new List<QuestionOption>{
+                            new QuestionOption {
+                              Name = "Babel",
+                              Correct = true
+                            },
+                            new QuestionOption {
+                              Name = "Webpack",
+                              Correct = false
+                            },
+                            new QuestionOption {
+                              Name = "Gulp",
+                              Correct = false
+                            }
+                          }
+                        },
+                        new Question
+                        {
+                          Name = "The state of a redux app should be always...",
+                          Options = new List<QuestionOption>{
+                            new QuestionOption {
+                              Name = "Mutable",
+                              Correct = true
+                            },
+                            new QuestionOption {
+                              Name = "Inmutable",
+                              Correct = false
+                            },
+                            new QuestionOption {
+                              Name = "Hybrid",
+                              Correct = false
                             }
                           }
                         }

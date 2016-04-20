@@ -33,7 +33,7 @@ namespace Quiz.Api.Controllers
             return await GetActiveQuiz();
         }
 
-        [HttpPost("Answer")]
+        [HttpPut("Answer")]
         public async Task Answer([FromBody]Model.QuestionAnswer answer)
         {
             var answeredOption = await _quizContext.Set<QuestionOption>()
