@@ -92,7 +92,7 @@ namespace Quiz.Api.Model
                         },
                         new Question
                         {
-                          Name = "What's the most popular JS transpiler?",
+                          Name = "What's the most popular JS compiler?",
                           Options = new List<QuestionOption>{
                             new QuestionOption {
                               Name = "Babel",
@@ -123,6 +123,42 @@ namespace Quiz.Api.Model
                             new QuestionOption {
                               Name = "Hybrid",
                               Correct = false
+                            }
+                          }
+                        },
+                        new Question
+                        {
+                          Name = "What's the most popular bundler?",
+                          Options = new List<QuestionOption>{
+                            new QuestionOption {
+                              Name = "Optimizations",
+                              Correct = false
+                            },
+                            new QuestionOption {
+                              Name = "Webpack",
+                              Correct = true
+                            },
+                            new QuestionOption {
+                              Name = "Gulp",
+                              Correct = false
+                            }
+                          }
+                        }
+                        new Question
+                        {
+                          Name = "What's the signature of a reducer?",
+                          Options = new List<QuestionOption>{
+                            new QuestionOption {
+                              Name = "(state, store)",
+                              Correct = false
+                            },
+                            new QuestionOption {
+                              Name = "(state, next)",
+                              Correct = false
+                            },
+                            new QuestionOption {
+                              Name = "(state, action)",
+                              Correct = true
                             }
                           }
                         }
