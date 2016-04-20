@@ -143,7 +143,7 @@ namespace Quiz.Api.Model
                               Correct = false
                             }
                           }
-                        }
+                        },
                         new Question
                         {
                           Name = "What's the signature of a reducer?",
