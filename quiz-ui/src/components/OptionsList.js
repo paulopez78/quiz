@@ -3,7 +3,7 @@ import Option from './Option';
 import OptionAnswer from './OptionAnswer';
 import OptionResult from './OptionResult';
 
-import { ListGroup } from 'react-bootstrap';
+import ListGroup from 'react-bootstrap/lib/ListGroup';
 
 const OptionsList = ({
   options,

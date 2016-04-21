@@ -1,8 +1,6 @@
-import 'babel-polyfill'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
 import io from 'socket.io-client';
 
 import { receiveQuestionResult } from './actions'

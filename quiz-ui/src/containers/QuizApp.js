@@ -4,11 +4,6 @@ import { fetchActiveQuiz } from '../actions';
 import QuestionsList from '../components/QuestionsList';
 
 class QuizApp extends Component{
-  componentDidMount() {
-    const { dispatch } = this.props
-    dispatch(fetchActiveQuiz())
-  }
-
   render(){
     const { questions, isFetching, name, error } = this.props;
     const isEmpty = questions.length === 0;
@@ -17,9 +12,7 @@ class QuizApp extends Component{
       <div>
         <h3>{name}</h3>
         {isEmpty
-          ? (isFetching
-            ? <h2>Loading...</h2>
-            : <h2>Empty.</h2>)
+          ? <h2>No active quiz!</h2>
           : <div>
               <QuestionsList questions={questions}/>
             </div>

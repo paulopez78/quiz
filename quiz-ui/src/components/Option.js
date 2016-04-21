@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListGroupItem } from 'react-bootstrap';
+import ListGroupItem from 'react-bootstrap/lib/ListGroupItem';
 
 const Option = (
   {

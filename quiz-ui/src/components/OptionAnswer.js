@@ -1,5 +1,6 @@
 import React from 'react';
-import { ListGroupItem, Label } from 'react-bootstrap';
+import ListGroupItem from 'react-bootstrap/lib/ListGroupItem';
+import Label from 'react-bootstrap/lib/Label'
 
 const OptionAnswer = (
   {

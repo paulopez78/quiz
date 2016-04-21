@@ -26,9 +26,9 @@ export function configureProxy(app, server){
     if (error.code !== 'ECONNRESET') {
       console.error('proxy error', error);
     }
-    //if (!res.headersSent) {
-    //  res.writeHead(500, {'content-type': 'application/json'});
-    //}
+    if (!res.headersSent) {
+      res.writeHead(500, {'content-type': 'application/json'});
+    }
 
     json = {error: 'proxy_error', reason: error.message};
     res.end(JSON.stringify(json));
