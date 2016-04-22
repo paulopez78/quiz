@@ -10,14 +10,22 @@ import QuizApp from '../containers/QuizApp'
 
 const targetUrl = `http://${API_HOST}:${API_PORT}`;
 
-export default function render(res) {
+export default function render(req, res) {
   fetch(`${targetUrl}/quiz/active`)
     .then(response => response.json())
-    .then(quiz => renderImpl(res, quiz))
-    .catch(error => renderImpl(res, {questions:[], error}))
+    .then(quiz => renderImpl(req, res, quiz))
+    .catch(error => renderImpl(req, res, {questions:[], error}))
 }
 
-function renderImpl(res,state) {
+function renderImpl(req,res,state) {
+  if (req.url.indexOf('results') >= 0){
+    state = {...state,
+      questions: state.questions.map(q => {
+        return {...q, resultVisible: true}
+      })
+    };
+  }
+
   const stateFromApi = {quiz:{...state}}
 
   const store = createStore(quizApp, stateFromApi);

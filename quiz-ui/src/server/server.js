@@ -26,7 +26,7 @@ else{
   app.use('/static', Express.static(path.join(__dirname, '..', '..', 'static')));
 }
 
-app.use((req, res) => render(res))
+app.use((req, res) => render(req, res))
 
 server.listen(SERVER_PORT, (error) => {
   if (error) {
