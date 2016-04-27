@@ -54,38 +54,38 @@ namespace Quiz.Api.Model
                             }
                           }
                         },
-                          new Question
+                        new Question
                         {
-                          Name = "Who is the creator of Redux?",
+                          Name = "Which kind of binding use React?",
                           Options = new List<QuestionOption>{
                             new QuestionOption {
-                              Name = "Dan Abramov",
+                              Name = "2Way-Binding",
+                              Correct = false
+                            },
+                            new QuestionOption {
+                              Name = "3Way-Binding",
+                              Correct = false
+                            },
+                            new QuestionOption {
+                              Name = "No Bindings",
                               Correct = true
-                            },
-                            new QuestionOption {
-                              Name = "My Mom",
-                              Correct = false
-                            },
-                            new QuestionOption {
-                              Name = "Darth Vader",
-                              Correct = false
                             }
                           }
                         },
                         new Question
                         {
-                          Name = "Who is the competitor of Redux?",
+                          Name = "How React updates the UI?",
                           Options = new List<QuestionOption>{
                             new QuestionOption {
-                              Name = "Flux",
-                              Correct = true
-                            },
-                            new QuestionOption {
-                              Name = "MVC",
+                              Name = "Dirty-Checkings",
                               Correct = false
                             },
                             new QuestionOption {
-                              Name = "MVVM",
+                              Name = "Bindings",
+                              Correct = false
+                            },
+                            new QuestionOption {
+                              Name = "VirtualDOM",
                               Correct = true
                             }
                           }
@@ -114,11 +114,11 @@ namespace Quiz.Api.Model
                           Options = new List<QuestionOption>{
                             new QuestionOption {
                               Name = "Mutable",
-                              Correct = true
+                              Correct = false
                             },
                             new QuestionOption {
                               Name = "Inmutable",
-                              Correct = false
+                              Correct = true
                             },
                             new QuestionOption {
                               Name = "Hybrid",
@@ -128,18 +128,18 @@ namespace Quiz.Api.Model
                         },
                         new Question
                         {
-                          Name = "What's the most popular bundler?",
+                          Name = "What's the React strategy?",
                           Options = new List<QuestionOption>{
                             new QuestionOption {
-                              Name = "Optimizations",
-                              Correct = false
-                            },
-                            new QuestionOption {
-                              Name = "Webpack",
+                              Name = "Put the HTML in JS",
                               Correct = true
                             },
                             new QuestionOption {
-                              Name = "Gulp",
+                              Name = "Put the JS in HTML",
+                              Correct = false
+                            },
+                            new QuestionOption {
+                              Name = "Put the CSS in HTML",
                               Correct = false
                             }
                           }
@@ -149,60 +149,15 @@ namespace Quiz.Api.Model
                           Name = "What's the signature of a reducer?",
                           Options = new List<QuestionOption>{
                             new QuestionOption {
-                              Name = "(state, store)",
+                              Name = "reducer (state, store)",
                               Correct = false
                             },
                             new QuestionOption {
-                              Name = "(state, next)",
+                              Name = "reducer (state, next)",
                               Correct = false
                             },
                             new QuestionOption {
-                              Name = "(state, action)",
-                              Correct = true
-                            }
-                          }
-                        }
-                  }
-              },
-              new Quiz
-              {
-                  Name = "Redux Quiz",
-                  Description = "Redux Quiz Questions",
-                  Active = false,
-                  Questions = new List<Question>
-                  {
-                        new Question
-                        {
-                          Name = "Who is the creator of Redux",
-                          Options = new List<QuestionOption>{
-                            new QuestionOption {
-                              Name = "Dan Abramov",
-                              Correct = true
-                            },
-                            new QuestionOption {
-                              Name = "Me",
-                              Correct = false
-                            },
-                            new QuestionOption {
-                              Name = "You",
-                              Correct = false
-                            }
-                          }
-                        },
-                        new Question
-                        {
-                          Name = "Who is the competitor of Redux",
-                          Options = new List<QuestionOption>{
-                            new QuestionOption {
-                              Name = "Flux",
-                              Correct = true
-                            },
-                            new QuestionOption {
-                              Name = "MVC",
-                              Correct = false
-                            },
-                            new QuestionOption {
-                              Name = "MVVM",
+                              Name = "reducer (state, action)",
                               Correct = true
                             }
                           }
