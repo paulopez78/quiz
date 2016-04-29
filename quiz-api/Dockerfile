@@ -1,4 +1,4 @@
-FROM node:slim
+FROM mhart/alpine-node
 
 ADD package.json /tmp/package.json
 RUN cd /tmp && npm install
