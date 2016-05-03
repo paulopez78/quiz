@@ -61,6 +61,7 @@ docker run -ti -d \
       --label interlock.ext.name=nginx \
       --link=interlock:interlock \
       -v nginx:/etc/conf \
+      -v $(pwd)/nginx.conf:/etc/conf/nginx.conf \
       --name nginx \
       nginx nginx -g "daemon off;" -c /etc/conf/nginx.conf
 

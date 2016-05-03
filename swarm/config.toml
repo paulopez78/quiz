@@ -1,0 +1,12 @@
+ListenAddr = ":8080"
+DockerURL = "tcp://192.168.99.101:3376"
+TLSCACert = "/var/lib/boot2docker/ca.pem"
+TLSCert = "/var/lib/boot2docker/server.pem"
+TLSKey = "/var/lib/boot2docker/server-key.pem"
+
+[[Extensions]]
+Name = "nginx"
+ConfigPath = "/etc/conf/nginx.conf"
+PidPath = "/etc/conf/nginx.pid"
+MaxConn = 1024
+Port = 80
