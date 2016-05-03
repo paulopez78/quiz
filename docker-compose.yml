@@ -4,48 +4,40 @@ services:
   quiz-ui:
     build: ./quiz-ui/.
     ports:
-      - "3000:3000"
-    links:
-      - quiz-api
+      - "3000"
+    labels:
+      interlock.hostname: "quiz"
+      interlock.domain: "dotnetnode.com"
     networks:
-      - front-tier
-      - back-tier
+      - quizApp
 
   quiz-api:
     build: ./quiz-api/.
     ports:
-      - "3030:3030"
-    links:
-      - redis
-      - quiz-api-db
+      - "3030"
     networks:
-      - external-tier
-      - back-tier
+     quizApp:
+      aliases:
+       - quiz-api
 
   quiz-api-db:
     build: ./quiz-api-db/.
     ports:
-      - "5000:5000"
+      - "5000"
     networks:
-      - external-tier
+      - quizApp
 
   quiz-worker:
     build: ./quiz-worker/.
-    links:
-      - redis
-      - quiz-api-db
     networks:
-      - external-tier
-      - back-tier
+      - quizApp
 
   redis:
     image: redis:alpine
     ports:
-      - "6379:6379"
+      - "6379"
     networks:
-      - back-tier
+      - quizApp
 
 networks:
-  front-tier:
-  external-tier:
-  back-tier:
+  quizApp:
