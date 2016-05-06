@@ -1,0 +1,35 @@
+version: "2"
+
+services:
+  interlock:
+      image: ehazlett/interlock:master
+      command: run
+      ports:
+        - 8080
+      environment:
+        INTERLOCK_CONFIG: |
+          ListenAddr = ":8080"
+          DockerURL = "unix:///var/run/docker.sock"
+
+          [[Extensions]]
+          Name = "nginx"
+          ConfigPath = "/etc/nginx/nginx.conf"
+          PidPath = "/var/run/nginx.pid"
+          TemplatePath = "/etc/interlock/nginx.conf.template"
+          BackendOverrideAddress = "192.168.99.100"
+          MaxConn = 1024
+          Port = 80
+          NginxPlusEnabled = false
+
+      volumes:
+        - ./nginx.conf.template:/etc/interlock/nginx.conf.template
+        - /var/run/docker.sock:/var/run/docker.sock
+
+  nginx:
+      image: nginx:latest
+      entrypoint: nginx
+      command: -g "daemon off;" -c /etc/nginx/nginx.conf
+      ports:
+        - 80:80
+      labels:
+        interlock.ext.name: "nginx"

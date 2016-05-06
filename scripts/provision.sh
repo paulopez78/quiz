@@ -40,31 +40,6 @@ swarm manage --tlsverify \
 --tlskey=/certs/server-key.pem \
 consul://$(docker-machine ip keystore):8500
 
-# Run nginx and interlock
-eval $(docker-machine env loadbalancer)
-
-sed "s/SWARM_MASTER_IP/$(docker-machine ip manager)/g" config.template.toml > config.toml
-docker run \
-    -P \
-    -d \
-    -ti \
-    -v nginx:/etc/conf \
-    -v /var/lib/boot2docker:/var/lib/boot2docker:ro \
-    -v /var/run/docker.sock:/var/run/docker.sock \
-    -v $(pwd)/config.toml:/etc/config.toml \
-    --name interlock \
-    ehazlett/interlock:1.0.1 \
-    -D run -c /etc/config.toml
-
-docker run -ti -d \
-      -p 80:80 \
-      --label interlock.ext.name=nginx \
-      --link=interlock:interlock \
-      -v nginx:/etc/conf \
-      -v $(pwd)/nginx.conf:/etc/conf/nginx.conf \
-      --name nginx \
-      nginx nginx -g "daemon off;" -c /etc/conf/nginx.conf
-
 # Run swarm node1
 eval $(docker-machine env agent01)
 docker run -d swarm join --addr=$(docker-machine ip agent01):2376 consul://$(docker-machine ip keystore):8500

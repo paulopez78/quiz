@@ -13,7 +13,7 @@ if __name__ == '__main__':
                     postAnswerTest(6, 16)
                     postAnswerTest(5, 13)
                     postAnswerTest(4, 10)
-                    postAnswerTest(3, 8)
+                    postAnswerTest(3, 7)
                     postAnswerTest(2, 4)
                     postAnswerTest(1, 1)
             except Exception,e:
