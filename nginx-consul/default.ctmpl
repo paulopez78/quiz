@@ -1,3 +1,12 @@
+user www-data;
+worker_processes 4;
+pid /var/run/nginx.pid;
+
+events {
+        worker_connections 768;
+        # multi_accept on;
+}
+
 http{
   {{$app := env "APP_NAME"}}
 
