@@ -4,15 +4,14 @@ services:
   quiz-ui:
     build: ./quiz-ui/.
     environment:
+      - SERVICE_NAME=quiz-ui
       - API_HOST=quiz-api
       - API_PORT=3030
     ports:
       - "3000"
-    labels:
-      interlock.hostname: "quiz"
-      interlock.domain: "dotnetnode.com"
     networks:
-      - quizApp
+      - frontend
+      - backend
 
   quiz-api:
     build: ./quiz-api/.
@@ -24,7 +23,7 @@ services:
     ports:
       - "3030"
     networks:
-     quizApp:
+     backend:
       aliases:
        - quiz-api
 
@@ -33,7 +32,7 @@ services:
     ports:
       - "5000"
     networks:
-      - quizApp
+      - backend
 
   quiz-worker:
     build: ./quiz-worker/.
@@ -43,14 +42,17 @@ services:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
     networks:
-      - quizApp
+      - backend
 
   redis:
     image: redis:alpine
     ports:
       - "6379"
     networks:
-      - quizApp
+      - backend
 
 networks:
-  quizApp:
+  frontend:
+    driver: overlay
+  backend:
+    driver: overlay
