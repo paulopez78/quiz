@@ -17,8 +17,9 @@ def postAnswer(data):
 def postAnswerTest(question, option):
     data = {'question':question, 'option': randint(option,option+2)}
 
-    apiHost = 'quiz.dotnetnode.com'
-    url = 'http://{0}/api/quiz/answer'.format(apiHost)
+    apiHost = os.getenv('QUIZ_API_HOST', 'quiz-ui')
+    apiPort = os.getenv('QUIZ_API_PORT', 80)
+    url = 'http://{0}:{1}/api/quiz/answer'.format(apiHost,apiPort)
 
     http = urllib3.PoolManager()
     http.request('POST', url, headers={'Content-Type': 'application/json'}, body=json.dumps(data))
