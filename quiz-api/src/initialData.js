@@ -67,4 +67,4 @@ const data = `{
             ]}
       ]}`;
 
-export default getData = () => JSON.parse(data);
+export const getData = () => JSON.parse(data);

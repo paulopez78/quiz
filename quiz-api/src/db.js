@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import getData from './initialData'
+import { getData } from './initialData'
 import { Quiz } from './model/Quiz'
 import { DB } from './config';
 
