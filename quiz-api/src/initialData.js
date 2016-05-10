@@ -1,4 +1,4 @@
-{
+const data = `{
   "id":1,
   "name":"React+Redux+JS Quiz",
   "description":"React Quiz Questions",
@@ -8,24 +8,9 @@
       "id":3,
       "name":"Which kind of binding use React?",
       "options":[
-        {
-          "id":7,
-          "correct":false,
-          "name":"2Way-Binding",
-          "result":0
-        },
-        {
-            "id":9,
-            "correct":true,
-            "name":"No Bindings",
-            "result":0
-        },
-        {
-          "id":8,
-          "correct":false,
-          "name":"3Way-Binding",
-          "result":0
-        }
+        {"id":7,"correct":false,"name":"2Way-Binding","result":0},
+        {"id":9,"correct":true,"name":"No Bindings","result":0},
+        {"id":8,"correct":false,"name":"3Way-Binding","result":0}
       ]
     },
     {
@@ -59,26 +44,27 @@
           {"id":17,"correct":true,"name":"Inmutable","result":0},
           {"id":16,"correct":false,"name":"Mutable","result":0}
           ]},
-        {
-          "id":5,"name":"What's the most popular JS compiler?",
+      {
+        "id":5,"name":"What's the most popular JS compiler?",
           "options":[
             {"id":15,"correct":false,"name":"Gulp","result":0},
             {"id":14,"correct":false,"name":"Webpack","result":0},
             {"id":13,"correct":true,"name":"Babel","result":0}
             ]},
-          {
-            "id":4,
-            "name":"How React updates the UI?",
-            "options":[
-              {"id":11,"correct":false,"name":"Bindings","result":0},
-              {"id":10,"correct":false,"name":"Dirty-Checkings","result":0},
-              {"id":12,"correct":true,"name":"VirtualDOM","result":0}
-              ]},
-            {
-              "id":8,"name":"What's the signature of a reducer?",
-              "options":[
-                {"id":23,"correct":false,"name":"reducer (state, next)","result":0},
-                {"id":22,"correct":false,"name":"reducer (state, store)","result":0},
-                {"id":24,"correct":true,"name":"reducer (state, action)","result":0}
-                ]}
-          ]}
+      {
+        "id":4,"name":"How React updates the UI?",
+          "options":[
+            {"id":11,"correct":false,"name":"Bindings","result":0},
+            {"id":10,"correct":false,"name":"Dirty-Checkings","result":0},
+            {"id":12,"correct":true,"name":"VirtualDOM","result":0}
+            ]},
+      {
+        "id":8,"name":"What's the signature of a reducer?",
+          "options":[
+            {"id":23,"correct":false,"name":"reducer (state, next)","result":0},
+            {"id":22,"correct":false,"name":"reducer (state, store)","result":0},
+            {"id":24,"correct":true,"name":"reducer (state, action)","result":0}
+            ]}
+      ]}`;
+
+export default getData = () => JSON.parse(data);

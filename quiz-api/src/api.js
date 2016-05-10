@@ -2,9 +2,10 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import http from 'http';
 import SocketIo from 'socket.io';
+import { dbConnect, dbSeed} from './db';
 import { subscribe } from './redis/Subscribed';
 import { router } from './routes/quiz'
-import { API_PORT, API_HOST } from './config';
+import { API_PORT, API_HOST, DB } from './config';
 
 const app = express();
 const server = new http.Server(app);
@@ -12,6 +13,9 @@ const io = new SocketIo(server);
 
 app.use(bodyParser.json());
 app.use('/', router)
+
+dbConnect();
+dbSeed();
 
 io.path('/ws');
 

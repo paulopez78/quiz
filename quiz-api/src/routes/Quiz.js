@@ -1,11 +1,11 @@
 import express from 'express';
 import { publish } from '../redis/publish'
-import Quiz from '../model/Quiz'
+import { getActiveQuiz } from '../model/Quiz'
 
 const router = express.Router();
 
 router.get('/quiz/active', (req,res) => {
-  Quiz.active()
+  getActiveQuiz()
       .then(quiz => res.send(quiz))
       .catch(error => res.send(error));
 });
