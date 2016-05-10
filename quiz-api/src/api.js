@@ -2,28 +2,16 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import http from 'http';
 import SocketIo from 'socket.io';
-import { getQuiz } from './apiClient';
-import { publish, createSubscription } from './questionResult';
+import { subscribe } from './redis/Subscribed';
+import { router } from './routes/quiz'
 import { API_PORT, API_HOST } from './config';
 
 const app = express();
 const server = new http.Server(app);
 const io = new SocketIo(server);
-const subscription = createSubscription();
 
 app.use(bodyParser.json());
-
-app.get('/quiz/active', (req,res) => {
-  getQuiz()
-    .then(quiz => res.send(quiz))
-    .catch(error => res.send(error));
-});
-
-app.post('/quiz/answer', (req, res) => {
-  publish(req.body)
-    .then(value => res.send(value))
-    .catch(error => res.send(error));
-})
+app.use('/', router)
 
 io.path('/ws');
 
@@ -37,7 +25,7 @@ if (API_PORT) {
   });
 
   io.on('connection', (socket) => {
-    subscription.subscribe(
+    subscribe(
       (message, value) => socket.emit(message, value)
     );
   });

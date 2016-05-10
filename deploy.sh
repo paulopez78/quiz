@@ -1,11 +1,4 @@
 #!/bin/bash
-cd ./quiz-api-db/src
-dnu restore
-dnu publish
-
-cd ..
-docker build -t paulopez/quiz-api-db:latest .
-docker push paulopez/quiz-api-db
 
 cd ../quiz-worker
 docker build -t paulopez/quiz-worker:latest .
