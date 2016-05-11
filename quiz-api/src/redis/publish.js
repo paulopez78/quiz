@@ -1,7 +1,7 @@
 import redis from 'redis'
-import { REDIS_HOST, REDIS_PORT, QUESTION_ANSWER } from './config'
+import { REDIS_OPTIONS, QUESTION_ANSWER_CHANNEL } from './config'
 
-const pub = redis.createClient({host: REDIS_HOST, port: REDIS_PORT});
+const pub = redis.createClient(REDIS_OPTIONS);
 const client = redis.createClient(REDIS_OPTIONS);
 
 client.on("error", function (err) {
@@ -26,7 +26,7 @@ export function publish(answer){
               option:answer.option,
               result:Number(value)
           }
-          pub.publish(QUESTION_ANSWER, JSON.stringify(result));
+          pub.publish(QUESTION_ANSWER_CHANNEL, JSON.stringify(result));
           return reject(result)
         }
       })

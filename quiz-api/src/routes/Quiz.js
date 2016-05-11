@@ -1,19 +1,19 @@
 import express from 'express';
 import { publish } from '../redis/publish'
-import { getActiveQuiz } from '../model/Quiz'
+import { findActiveQuiz } from '../model/Quiz'
 
-const router = express.Router();
+const quiz = express.Router();
 
-router.get('/quiz/active', (req,res) => {
-  getActiveQuiz()
+quiz.get('/quiz/active', (req,res) => {
+  findActiveQuiz()
       .then(quiz => res.send(quiz))
       .catch(error => res.send(error));
 });
 
-router.put('/quiz/answer', (req, res) => {
+quiz.put('/quiz/answer', (req, res) => {
   publish(req.body)
     .then(value => res.send(value))
     .catch(error => res.send(error));
 })
 
-export default router;
+export default quiz;

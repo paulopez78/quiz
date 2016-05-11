@@ -1,5 +1,18 @@
 import mongoose from 'mongoose';
 
+const optionSchema = new mongoose.Schema({
+  id: { type: Number, unique: true },
+  name: String,
+  correct: Number,
+  result: Number
+})
+
+const questionSchema = new mongoose.Schema({
+  id: { type: Number, unique: true },
+  name: String,
+  options: [optionSchema]
+})
+
 const quizSchema = new mongoose.Schema({
   id: { type: Number, unique: true },
   name: String,
@@ -8,20 +21,7 @@ const quizSchema = new mongoose.Schema({
   questions: [questionSchema]
 });
 
-const questionSchema = new mongoose.Schema({
-  id: { type: Number, unique: true },
-  name: String,
-  options: [optionSchema]
-})
-
-const optionSchema = new mongoose.Schema({
-  id: { type: Number, unique: true },
-  name: String,
-  correct: Number,
-  result: Number
-})
-
-export const Quiz = mongoose.model('User', userSchema);
+export const Quiz = mongoose.model('Quiz', quizSchema);
 
 export function findActiveQuiz(){
   return new Promise((resolve, reject) => {
