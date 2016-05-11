@@ -1,4 +1,4 @@
-FROM mhart/alpine-node
+FROM hypriot/rpi-node
 
 ADD package.json /tmp/package.json
 RUN cd /tmp && npm install
