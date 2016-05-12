@@ -3,16 +3,18 @@ import { toggleResult } from '../actions';
 import { selectedQuestion } from './common'
 import ToggleResult from '../components/ToggleResult';
 
-function mapStateToProps(state, ownProps){
-  const { questions } = state.quiz;
-  const { questionId } = ownProps;
+function mapStateToProps(_, initProps){
+  const { questionId } = initProps;
 
-  const {
-    resultVisible
-  } = selectedQuestion(questionId, questions);
+  return (state) => {
+    const { questions } = state.quiz;
+    const {
+      resultVisible
+    } = selectedQuestion(questionId, questions);
 
-  return {
-    resultVisible
+    return {
+      resultVisible
+    }
   }
 }
 

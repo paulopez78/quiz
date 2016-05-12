@@ -3,18 +3,20 @@ import { toggleAnswer, postQuestionAnswer } from '../actions';
 import { selectedQuestion } from './common'
 import ToggleAnswer from '../components/ToggleAnswer';
 
-function mapStateToProps(state, ownProps){
-  const { questions } = state.quiz;
-  const { questionId } = ownProps;
+function mapStateToProps(_, initProps){
+  const { questionId } = initProps;
 
-  const {
-    answerVisible,
-    selectedOption
-  } = selectedQuestion(questionId, questions);
+  return (state) => {
+    const { questions } = state.quiz;
+    const {
+      answerVisible,
+      selectedOption
+    } = selectedQuestion(questionId, questions);
 
-  return {
-    answerVisible,
-    optionSelected : selectedOption >= 0
+    return {
+      answerVisible,
+      optionSelected : selectedOption >= 0
+    }
   }
 }
 
