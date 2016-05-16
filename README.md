@@ -7,7 +7,6 @@ More information here: [Barcelona .NET Core Meetup](http://www.meetup.com/es-ES/
 
 Prerequisites:
 * [docker toolbox](https://www.docker.com/products/docker-toolbox)
-* [asp .net core](http://docs.asp.net/en/latest/getting-started/index.html)
 
 Run with docker
 * `./start.sh`
