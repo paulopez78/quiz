@@ -1,4 +1,4 @@
-FROM microsoft/aspnet:1.0.0-rc1-update1-coreclr
+FROM microsoft/dotnet:core
 
 COPY ./src/bin/output/approot /app
 WORKDIR /app

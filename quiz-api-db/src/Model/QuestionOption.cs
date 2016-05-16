@@ -1,5 +1,3 @@
-using System;
-
 namespace Quiz.Api.Model
 {
     public class QuestionOption

@@ -1,7 +1,7 @@
 #!/bin/bash
 cd ./quiz-api-db/src
-dnu restore
-dnu publish
+dotnet restore
+dotnet publish
 
 cd ../../
 docker-compose build
