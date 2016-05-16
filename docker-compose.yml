@@ -8,7 +8,7 @@ services:
       - API_HOST=quiz-api
       - API_PORT=3030
     ports:
-      - "3000"
+      - "80:3000"
     networks:
       - frontend
       - backend
@@ -28,7 +28,7 @@ services:
        - quiz-api
 
   quiz-api-db:
-    build: ./quiz-api-db/.
+    build: ./quiz-api-db/src/.
     ports:
       - "5000:5000"
     networks:
