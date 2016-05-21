@@ -13,6 +13,7 @@ Run with docker
 
 Quiz ui
 * `http://docker-host-ip/3000`
+* `http://docker-host-ip/3000/results`
 
 Quiz admin
 * `http://docker-host-ip:3010`

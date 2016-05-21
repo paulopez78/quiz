@@ -50,5 +50,5 @@ for host in ${hosts[@]}; do
 done
 
 eval $(docker-machine env --swarm manager)
-docker-compose -f docker-compose.yml up --force-recreate -d
+docker-compose -f docker-compose-swarm.yml up --force-recreate -d
 echo 'add to /etc/hosts ' $(docker-machine ip consul) 'quiz-ui'

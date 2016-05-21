@@ -8,7 +8,7 @@ services:
       - API_HOST=quiz-api
       - API_PORT=3030
     ports:
-      - "3000:3000"
+      - "3000"
     networks:
       - frontend
       - backend
@@ -21,7 +21,7 @@ services:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
     ports:
-      - "3030:3030"
+      - "3030"
     networks:
      backend:
       aliases:
@@ -30,7 +30,7 @@ services:
   quiz-api-db:
     build: ./quiz-api-db/src/.
     ports:
-      - "5000:5000"
+      - "5000"
     networks:
       - backend
 
@@ -47,10 +47,12 @@ services:
   redis:
     image: redis:alpine
     ports:
-      - "6379:6379"
+      - "6379"
     networks:
       - backend
 
 networks:
   frontend:
+    driver: overlay
   backend:
+    driver: overlay
