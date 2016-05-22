@@ -2,9 +2,9 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import http from 'http';
 import SocketIo from 'socket.io';
-import { getQuiz } from './apiClient';
 import { publish, createSubscription } from './questionResult';
-import { API_PORT, API_HOST } from './config';
+import { API_PORT, API_HOST, QUIZ_API_HOST, QUIZ_API_PORT } from './config';
+import fetch from 'isomorphic-fetch'
 
 const app = express();
 const server = new http.Server(app);
@@ -14,7 +14,8 @@ const subscription = createSubscription();
 app.use(bodyParser.json());
 
 app.get('/quiz/active', (req,res) => {
-  getQuiz()
+  fetch(`http://${QUIZ_API_HOST}:${QUIZ_API_PORT}/quiz/active`)
+    .then(response => response.json())
     .then(quiz => res.send(quiz))
     .catch(error => res.send(error));
 });
