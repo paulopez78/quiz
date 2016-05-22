@@ -1,5 +1,6 @@
 #!/bin/bash
 cd ./quiz-api-db/src
+dotnet restore && dotnet publish
 docker build -t paulopez/quiz-api-db:latest .
 docker push paulopez/quiz-api-db
 
