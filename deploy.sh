@@ -5,7 +5,7 @@ docker run -it \
   -v $(pwd):/app \
   -w /app  \
   microsoft/dotnet:latest \
-  dotnet restore && dotnet publish
+  sh -c 'dotnet restore && dotnet publish'
 
 docker build -t paulopez/quiz-api-db:latest .
 docker push paulopez/quiz-api-db
