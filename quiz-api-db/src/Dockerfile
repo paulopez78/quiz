@@ -4,4 +4,4 @@ ADD ./bin/Debug/netcoreapp1.0/publish /app
 WORKDIR /app
 
 EXPOSE 5000/tcp
-ENTRYPOINT dotnet src.dll
+ENTRYPOINT dotnet app.dll
