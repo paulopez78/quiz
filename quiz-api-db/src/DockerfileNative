@@ -1,0 +1,7 @@
+FROM microsoft/dotnet:core-deps
+
+ADD ./bin/Debug/netcoreapp1.0/debian.8-x64/publish /app
+WORKDIR /app
+
+EXPOSE 5000/tcp
+ENTRYPOINT ./app
